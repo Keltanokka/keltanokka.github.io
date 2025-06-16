@@ -1,153 +1,3956 @@
 <!DOCTYPE html>
-<html lang="cz">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[1.9+] Suomi Tier List</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <link rel="icon" href="/images/icon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>CUBETIERS - Rankings</title>
 </head>
 <body>
-    <header>
-        <h1><a id="nazev">[1.9+] Suomi Tier List</a></h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#overall">Overall<img id="kit" src="kit_icons/trophy.png"></a></li>
-            <li><a href="#cpvp">Crystal<img id="kit" src="kit_icons/cpvp.png"></a></li>
-            <li><a href="#axe">Axe<img id="kit" src="kit_icons/axe.png"></a></li>
-            <li><a href="#sword">Beast<img id="kit" src="kit_icons/sword.png"></a></li>
-            <li><a href="#uhc">UHC<img id="kit" src="kit_icons/uhc.png"></a></li>
-            <li><a href="#npot">NethPot<img id="kit" src="kit_icons/npot.png"></a></li>
-            <li><a href="#pot">Pot<img id="kit" src="kit_icons/pot.png"></a></li>
-            <li><a href="#smp">SMP<img id="kit" src="kit_icons/smp.png"></a></li>
+  <div class="container">
+      <header>
+          <div class="logo"><img src="/images/logo.png" class="logo-img" alt="Logo"></div>
+          <nav class="nav-tabs">
+              <a href="/"><div class="nav-tab active"><i class="fa-solid fa-house"></i> Home</div></a>
+              <a href="views/index.ejs"></a><div class="nav-tab"><i class="fa-solid fa-trophy"></i> Rankings</div></a>
+              <div class="nav-tab dropdown-tab">
+                <div class="dropdown-btn" id="discord-dropdown-btn"><i class="fa-brands fa-discord"></i> Discords <i class="fa-solid fa-caret-down"></i></div>
+                <div class="dropdown-content" id="discord-dropdown-content">
+                  <a href="https://discord.gg/rEfRunerCj" target="_blank">
+                    <img src="/images/cubenetwork.png" alt="CubeNetwork"> CubeNetwork
+                  </a>
+                  <a href="https://discord.gg/6c5t6uqVEW" target="_blank">
+                    <img src="/images/cubetierlist.png" alt="CubeTierlist"> CubeTierlist
+                  </a>
+                  <a href="https://discord.gg/t4tVCFDz9t" target="_blank">
+                    <img src="/images/cubeappeals.png" alt="CubeAppeals"> CubeAppeals
+                  </a>
+                </div>
+              </div>
+              <div class="search-container">
+                  <div class="search-wrapper">
+                      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                      <input type="text" id="player-search" class="search-input" placeholder="Search player...">
+                      <div id="autocomplete-results" class="autocomplete-results"></div>
+                  </div>
+                  <div id="search-error" class="search-error"></div>
+              </div>
+          </nav>
+      </header>
+        
+      <!-- Rest of your HTML remains unchanged -->
+      <div class="tab-bar">
+          <div class="tab active">
+            <a href="/"><img src="/images/overall.svg" alt="Trophy Icon"></a>
+            <span>Overall</span>
+          </div>
+          <div class="tab"><a href="/vanilla.html"><img src="/images/vanilla.svg" alt="Vanilla"></a></div>
+          <div class="tab"><a href="/uhc.html"><img src="/images/uhc.svg" alt="uhc"></a></div>
+          <div class="tab"><a href="/pot.html"><img src="/images/pot.svg" alt="pot"></a></div>
+          <div class="tab"><a href="/netheriteop.html"><img src="/images/nethop.svg" alt="nethpot"></a></div>
+          <div class="tab"><a href="/smp.html"><img src="/images/smp.svg" alt="smp"></a></div>
+          <div class="tab"><a href="/sword.html"><img src="/images/sword.svg" alt="Sword"></a></div>
+          <div class="tab"><a href="/axe.html"><img src="/images/axe.svg" alt="Axe"></a></div>
+          <div class="tab"><a href="/mace.html"><img src="/images/mace.svg" alt="mace"></a></div>
+      </div>
 
-            <li><a href="#mace">Mace<img id="kit" src="kit_icons/diasmp.png"></a></li>
-        </ul>
-    </nav>
+      <div class="infolb">
+        <label class="label" for="#">#</label>
+        <label class="label" for="player">Player</label>
+        <label class="label" for="region">Region</label>
+        <label class="label" for="tiers">TIERS</label>
+      </div>
 
-    <div id="tabulky">
-        <div class="table-container">
-            <table id="overall-tabulka" class="tabulka"></table>
+      <!-- PLAYER LEADERBOARD -->
+      <div class="leaderboard">
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="1">
+          <span class="rank-number">1</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Hazardiscoolerr/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
         </div>
-        <div id="cpvp-tabulka" class="tabulka skryta">
-            <table>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td colspan="9">
-                        <div id="kontejner-6-14">
-                        </div>
-                    </td>
-                </tr>
-            </table>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Hazardiscoolerr">Hazardiscoolerr</div>
+          <div class="player-rank">🏅 Combat Cadet (20 points)</div>
         </div>
-        <div id="axe-tabulka" class="tabulka skryta">
-            <table>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td colspan="9">
-                        <div id="kontejner-6-14">
-                        </div>
-                    </td>
-                </tr>
-            </table>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT2">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT2</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="2">
+          <span class="rank-number">2</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/NacatDaFlopper/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
         </div>
-        <div id="sword-tabulka" class="tabulka skryta">
-            <table>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td colspan="9">
-                        <div id="kontejner-6-14">
-                        </div>
-                    </td>
-                </tr>
-            </table>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="NacatDaFlopper">NacatDaFlopper</div>
+          <div class="player-rank">🏅 Combat Cadet (20 points)</div>
         </div>
-        <div id="npot-tabulka" class="tabulka skryta">
-            <table>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td colspan="9">
-                        <div id="kontejner-6-14">
-                        </div>
-                    </td>
-                </tr>
-            </table>
+              
+        <!-- Region indicator -->
+        <div class="region EU">EU</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT2">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT2</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="3">
+          <span class="rank-number">3</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/vitrix1/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
         </div>
-        <div id="pot-tabulka" class="tabulka skryta">
-            <table>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td colspan="9">
-                        <div id="kontejner-6-14">
-                        </div>
-                    </td>
-                </tr>
-            </table>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="vitrix1">vitrix1</div>
+          <div class="player-rank">🏅 Combat Cadet (20 points)</div>
         </div>
-        <div id="smp-tabulka" class="tabulka skryta">
-            <table>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td colspan="9">
-                        <div id="kontejner-6-14">
-                        </div>
-                    </td>
-                </tr>
-            </table>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT2">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT2</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="4">
+          <span class="rank-number">4</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/DrugLord420/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
         </div>
-        <div id="uhc-tabulka" class="tabulka skryta">
-            <table>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td colspan="9">
-                        <div id="kontejner-6-14">
-                        </div>
-                    </td>
-                </tr>
-            </table>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="DrugLord420">DrugLord420</div>
+          <div class="player-rank">🏅 Combat Cadet (20 points)</div>
         </div>
-        <div id="diasmp-tabulka" class="tabulka skryta">
-            <table>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td colspan="9">
-                        <div id="kontejner-6-14">
-                        </div>
-                    </td>
-                </tr>
-            </table>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT2">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT2</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="5">
+          <span class="rank-number">5</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/YeetNugget3000/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
         </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="YeetNugget3000">YeetNugget3000</div>
+          <div class="player-rank">🏅 Combat Cadet (20 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT2">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT2</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="6">
+          <span class="rank-number">6</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/LalitDigra1/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="LalitDigra1">LalitDigra1</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="7">
+          <span class="rank-number">7</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/creinex/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="creinex">creinex</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="8">
+          <span class="rank-number">8</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Funstick_XD/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Funstick_XD">Funstick_XD</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region EU">EU</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="9">
+          <span class="rank-number">9</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Skullyikonik/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Skullyikonik">Skullyikonik</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="10">
+          <span class="rank-number">10</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/oZxna/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="oZxna">oZxna</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="11">
+          <span class="rank-number">11</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Wolferersei22/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Wolferersei22">Wolferersei22</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="12">
+          <span class="rank-number">12</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/eqr1/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="eqr1">eqr1</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="13">
+          <span class="rank-number">13</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Its_Sam2/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Its_Sam2">Its_Sam2</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="14">
+          <span class="rank-number">14</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/HerPowerwFlnish/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="HerPowerwFlnish">HerPowerwFlnish</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="15">
+          <span class="rank-number">15</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/IEZQ/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="IEZQ">IEZQ</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="16">
+          <span class="rank-number">16</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/txslinn/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="txslinn">txslinn</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="17">
+          <span class="rank-number">17</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/kaizky/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="kaizky">kaizky</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="18">
+          <span class="rank-number">18</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Talking3/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Talking3">Talking3</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="19">
+          <span class="rank-number">19</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/HT3BOSS/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="HT3BOSS">HT3BOSS</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region EU">EU</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="20">
+          <span class="rank-number">20</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/XyMike0/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="XyMike0">XyMike0</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region EU">EU</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="21">
+          <span class="rank-number">21</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Clovernet/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Clovernet">Clovernet</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="22">
+          <span class="rank-number">22</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Ruokfr/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Ruokfr">Ruokfr</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="23">
+          <span class="rank-number">23</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/ItzMeVenom/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="ItzMeVenom">ItzMeVenom</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="24">
+          <span class="rank-number">24</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Hestiah/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Hestiah">Hestiah</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="25">
+          <span class="rank-number">25</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/PRITHVI_XD/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="PRITHVI_XD">PRITHVI_XD</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="26">
+          <span class="rank-number">26</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/CreyCuddleBun/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="CreyCuddleBun">CreyCuddleBun</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="27">
+          <span class="rank-number">27</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/MohithGamer2013/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="MohithGamer2013">MohithGamer2013</div>
+          <div class="player-rank">🏅 Combat Novice (10 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="28">
+          <span class="rank-number">28</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Str0mXd/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Str0mXd">Str0mXd</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="29">
+          <span class="rank-number">29</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/AFAKK/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="AFAKK">AFAKK</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region EU">EU</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="30">
+          <span class="rank-number">30</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/wrdra/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="wrdra">wrdra</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="31">
+          <span class="rank-number">31</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/1b4HeartsKeiani/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="1b4HeartsKeiani">1b4HeartsKeiani</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="32">
+          <span class="rank-number">32</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/wV4pE/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="wV4pE">wV4pE</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="33">
+          <span class="rank-number">33</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/MOM_BACK/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="MOM_BACK">MOM_BACK</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="34">
+          <span class="rank-number">34</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/BBROMAN/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="BBROMAN">BBROMAN</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="35">
+          <span class="rank-number">35</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/ItsMeD4ddy/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="ItsMeD4ddy">ItsMeD4ddy</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="36">
+          <span class="rank-number">36</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/GalaxieCritter/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="GalaxieCritter">GalaxieCritter</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="37">
+          <span class="rank-number">37</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/X1phatomX1/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="X1phatomX1">X1phatomX1</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="38">
+          <span class="rank-number">38</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/TriszzMujidol/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="TriszzMujidol">TriszzMujidol</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region EU">EU</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="39">
+          <span class="rank-number">39</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/sachuuuh/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="sachuuuh">sachuuuh</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="40">
+          <span class="rank-number">40</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/RealTurtleMan/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="RealTurtleMan">RealTurtleMan</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="41">
+          <span class="rank-number">41</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Kencarsonfan114/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Kencarsonfan114">Kencarsonfan114</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region EU">EU</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="42">
+          <span class="rank-number">42</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/HeiseRR/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="HeiseRR">HeiseRR</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="43">
+          <span class="rank-number">43</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/STRA1G8T/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="STRA1G8T">STRA1G8T</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="44">
+          <span class="rank-number">44</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/g4nn1/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="g4nn1">g4nn1</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region EU">EU</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="45">
+          <span class="rank-number">45</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Arctic/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Arctic">Arctic</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="46">
+          <span class="rank-number">46</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Zylennn/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Zylennn">Zylennn</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="47">
+          <span class="rank-number">47</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/wreathing/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="wreathing">wreathing</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="48">
+          <span class="rank-number">48</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/calzoneu/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="calzoneu">calzoneu</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region EU">EU</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="49">
+          <span class="rank-number">49</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Ponker1234/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Ponker1234">Ponker1234</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="50">
+          <span class="rank-number">50</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/YtGodDevil/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="YtGodDevil">YtGodDevil</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="51">
+          <span class="rank-number">51</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/cpvpmaster11/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="cpvpmaster11">cpvpmaster11</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="52">
+          <span class="rank-number">52</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/H7SC/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="H7SC">H7SC</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="53">
+          <span class="rank-number">53</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Ownk/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Ownk">Ownk</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="54">
+          <span class="rank-number">54</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/sufrv/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="sufrv">sufrv</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="55">
+          <span class="rank-number">55</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/MoonWithAGalaxy2/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="MoonWithAGalaxy2">MoonWithAGalaxy2</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="56">
+          <span class="rank-number">56</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/waatsek/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="waatsek">waatsek</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region EU">EU</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="57">
+          <span class="rank-number">57</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Piratesai/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Piratesai">Piratesai</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="58">
+          <span class="rank-number">58</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/GlacialCookie/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="GlacialCookie">GlacialCookie</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="59">
+          <span class="rank-number">59</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/PREET__/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="PREET__">PREET__</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="60">
+          <span class="rank-number">60</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/RichPickle_Dan/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="RichPickle_Dan">RichPickle_Dan</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="61">
+          <span class="rank-number">61</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Supernova35911/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Supernova35911">Supernova35911</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region EU">EU</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="62">
+          <span class="rank-number">62</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Awakenedwastaken/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Awakenedwastaken">Awakenedwastaken</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="63">
+          <span class="rank-number">63</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/ItzRealMeCw/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="ItzRealMeCw">ItzRealMeCw</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="64">
+          <span class="rank-number">64</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/dasdfs/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="dasdfs">dasdfs</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="65">
+          <span class="rank-number">65</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Urbano1312/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Urbano1312">Urbano1312</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region EU">EU</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="66">
+          <span class="rank-number">66</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Harshsoshit/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Harshsoshit">Harshsoshit</div>
+          <div class="player-rank">🏅 Rookie (6 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT3">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT3</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="67">
+          <span class="rank-number">67</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/xm_tnGna_06_03/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="xm_tnGna_06_03">xm_tnGna_06_03</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="68">
+          <span class="rank-number">68</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Oggymcx/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Oggymcx">Oggymcx</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="69">
+          <span class="rank-number">69</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/wxflame/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="wxflame">wxflame</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="70">
+          <span class="rank-number">70</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/SkibidiCrimZ/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="SkibidiCrimZ">SkibidiCrimZ</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="71">
+          <span class="rank-number">71</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/442_/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="442_">442_</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="72">
+          <span class="rank-number">72</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/m4llo_xd/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="m4llo_xd">m4llo_xd</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="73">
+          <span class="rank-number">73</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/_OG_Warrior_/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="_OG_Warrior_">_OG_Warrior_</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="74">
+          <span class="rank-number">74</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Bro_Is_Sad/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Bro_Is_Sad">Bro_Is_Sad</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="75">
+          <span class="rank-number">75</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Devil_luttapii/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Devil_luttapii">Devil_luttapii</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="76">
+          <span class="rank-number">76</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Juhaposssu/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Juhaposssu">Juhaposssu</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="77">
+          <span class="rank-number">77</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Marv_zx/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Marv_zx">Marv_zx</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="78">
+          <span class="rank-number">78</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/slowxel/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="slowxel">slowxel</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="79">
+          <span class="rank-number">79</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/ASB2327/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="ASB2327">ASB2327</div>
+          <div class="player-rank">🏅 Rookie (4 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="80">
+          <span class="rank-number">80</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Spintain/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Spintain">Spintain</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="81">
+          <span class="rank-number">81</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/OfficialWallnut/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="OfficialWallnut">OfficialWallnut</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="82">
+          <span class="rank-number">82</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/GodKnight007/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="GodKnight007">GodKnight007</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="83">
+          <span class="rank-number">83</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Davepodi/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Davepodi">Davepodi</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="84">
+          <span class="rank-number">84</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/morantvr/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="morantvr">morantvr</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="85">
+          <span class="rank-number">85</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/ItzNexer/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="ItzNexer">ItzNexer</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="86">
+          <span class="rank-number">86</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/vqrrz/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="vqrrz">vqrrz</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="87">
+          <span class="rank-number">87</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/karyl7770/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="karyl7770">karyl7770</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="88">
+          <span class="rank-number">88</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/ItsRacer_ExE/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="ItsRacer_ExE">ItsRacer_ExE</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="89">
+          <span class="rank-number">89</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/DetectiveRatbu/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="DetectiveRatbu">DetectiveRatbu</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="90">
+          <span class="rank-number">90</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/LT1/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="LT1">LT1</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="91">
+          <span class="rank-number">91</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/lando54_yt/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="lando54_yt">lando54_yt</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="92">
+          <span class="rank-number">92</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/AndyyPro/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="AndyyPro">AndyyPro</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="93">
+          <span class="rank-number">93</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/PlayerSurya/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="PlayerSurya">PlayerSurya</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="94">
+          <span class="rank-number">94</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/thaha999/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="thaha999">thaha999</div>
+          <div class="player-rank">🏅 Rookie (3 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT4">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT4</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="95">
+          <span class="rank-number">95</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/dc_trick/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="dc_trick">dc_trick</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="96">
+          <span class="rank-number">96</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/AZE_YT/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="AZE_YT">AZE_YT</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="97">
+          <span class="rank-number">97</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/zxer999/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="zxer999">zxer999</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="98">
+          <span class="rank-number">98</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/GamerBoys1/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="GamerBoys1">GamerBoys1</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="99">
+          <span class="rank-number">99</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Canon_69/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Canon_69">Canon_69</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="100">
+          <span class="rank-number">100</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/2bEndd/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="2bEndd">2bEndd</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="101">
+          <span class="rank-number">101</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/DrAce89/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="DrAce89">DrAce89</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="102">
+          <span class="rank-number">102</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/sreeraj/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="sreeraj">sreeraj</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="103">
+          <span class="rank-number">103</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Air_Regent/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Air_Regent">Air_Regent</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="104">
+          <span class="rank-number">104</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/FoRzAnop/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="FoRzAnop">FoRzAnop</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="105">
+          <span class="rank-number">105</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Re1yh/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Re1yh">Re1yh</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="106">
+          <span class="rank-number">106</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/silentdashcx/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="silentdashcx">silentdashcx</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="107">
+          <span class="rank-number">107</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/PredaKing69/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="PredaKing69">PredaKing69</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="108">
+          <span class="rank-number">108</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/its_blue_Craft/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="its_blue_Craft">its_blue_Craft</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="109">
+          <span class="rank-number">109</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/quilava/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="quilava">quilava</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="110">
+          <span class="rank-number">110</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/the_mason8r/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="the_mason8r">the_mason8r</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="111">
+          <span class="rank-number">111</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/Veqric/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="Veqric">Veqric</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="112">
+          <span class="rank-number">112</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/WIXY_GAMINGG/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="WIXY_GAMINGG">WIXY_GAMINGG</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="113">
+          <span class="rank-number">113</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/MrLxgend_/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="MrLxgend_">MrLxgend_</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="114">
+          <span class="rank-number">114</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/KxEr/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="KxEr">KxEr</div>
+          <div class="player-rank">🏅 Rookie (2 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier HT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>HT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="115">
+          <span class="rank-number">115</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/KL64DARK/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="KL64DARK">KL64DARK</div>
+          <div class="player-rank">🏅 Rookie (1 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="116">
+          <span class="rank-number">116</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/AnchorSmartDie/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="AnchorSmartDie">AnchorSmartDie</div>
+          <div class="player-rank">🏅 Rookie (1 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region AS">AS</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      <div class="leaderboardContainer">
+        <!-- Rank with integrated player avatar -->
+        <div class="rank" id="117">
+          <span class="rank-number">117</span>
+          <img class="avatar" src="https://starlightskins.lunareclipse.studio/render/default/hockey6727/bust" onerror="this.onerror=null; this.src='https://starlightskins.lunareclipse.studio/render/default/jeb/bust';" alt="Player Avatar">
+        </div>
+          
+        <!-- Player info -->
+        <div class="player-info">
+          <div class="player-name" data-name="hockey6727">hockey6727</div>
+          <div class="player-rank">🏅 Rookie (1 points)</div>
+        </div>
+              
+        <!-- Region indicator -->
+        <div class="region NA">NA</div>
+              
+<!-- Tiers section -->
+<div class="tiers">
+<div class="tier LT5">
+  <img class="tier-icon" src="/images/vanilla.svg" alt="Vanilla">
+  <span>LT5</span>
+</div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+<div class="tier blank"></div>
+</div>
+
+
+      </div>
+      
+      </div>
+<!-- Add this right before the closing </div> of the container div and before the scripts -->
+        </div>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="copyright">
+                    &copy; 2025 cubenetwork | hyzexgames
+                </div>
+                <div class="footer-social">
+                    <a href="https://discord.gg/rEfRunerCj" target="_blank" class="social-link">
+                        <i class="fa-brands fa-discord"></i> Discord
+                    </a>
+                    <a href="https://www.youtube.com/@CubeNetworkFun" target="_blank" class="social-link">
+                        <i class="fa-brands fa-youtube"></i> YouTube
+                    </a>
+                </div>
+            </div>
+        </footer>
     </div>
-
-    <section>
-        <p id="konec">Officiální stránka <a id="mctiers" href="https://mctiers.com">MCTiers</a></p>
-    </section>
-
-    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-    <script src="script.js"></script>
+    <script src="/mainjs.js"></script>
+    <script src="auto-refresh.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"950a0fcb4e0a09b4","version":"2025.6.2","r":1,"token":"76c71a5c449b49a88a26f6c0b4c072c0","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
 </body>
 </html>
+
