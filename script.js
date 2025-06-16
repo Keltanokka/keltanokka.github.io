@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     nactiExcel('https://docs.google.com/spreadsheets/d/1OIod_IOs0te98BKb5BvApmtwMVWojtaPCgx7FJZVh28/edit?usp=sharing', 'overall-tabulka');
     nactiExcel('https://docs.google.com/spreadsheets/d/1j_F6VyWnCrt6GQxtQDjdNyOYX2h4CXR8XMwRv8Dtanw/edit?usp=sharing', 'cpvp-tabulka');
     nactiExcel('https://docs.google.com/spreadsheets/d/1mkRA4irm2U4iWAtaM4GE-Cud3iZsaO-YU0AB8gvjhnM/edit?usp=sharing', 'axe-tabulka');
-    nactiExcel('https://docs.google.com/spreadsheets/d/1x-CQwTa1UXPCAvEPGSS_pGmAEPA_BjEtSV2lLxyvHmc/edit?usp=sharing', 'sword-tabulka');
+    nactiExcel('https://docs.google.com/spreadsheets/d/1DffW3V7NLXyvgm8pdgT4FrItol2Gnp3gj_R5AVNYvgo/edit?usp=sharing', 'sword-tabulka');
     nactiExcel('https://docs.google.com/spreadsheets/d/1pt1KCOXspTBCEj6C6q2bnCJBLj5VJG57rXQ1vHcAJwM/edit?usp=sharing', 'npot-tabulka');
     nactiExcel('https://docs.google.com/spreadsheets/d/19fgMlbGaQ716KUa8umsMHk0wTZFa0leAtGpIb_44iT0/edit?usp=sharing', 'pot-tabulka');
     nactiExcel('https://docs.google.com/spreadsheets/d/13OqD1PetWvu7IOn6vph06m8TmML5UsCvwmaVADT-kkg/edit?usp=sharing', 'smp-tabulka');
