@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 
 body {
@@ -75,7 +74,6 @@ section {
     color: lightblue;
 }
 
-/* Desktop styles */
 @media (min-width: 769px) {
     nav ul li {
         display: inline;
@@ -83,12 +81,11 @@ section {
     }
 }
 
-/* Mobile styles */
 @media (max-width: 768px) {
     body {
         margin: 1px;
     }
-    header {
+    header{
         width: 94%;
     }
     nav ul {
@@ -112,18 +109,18 @@ section {
         max-width: 20px;
     }
 
-    .table {
+    .tabulka {
         display: block;
         overflow-x: auto;
-        max-width: 88%;
+        max-width: 88%;;
     }
 
-    .table tr {
+    .tabulka tr {
         display: flex;
         flex-wrap: wrap;
     }
 
-    .table td {
+    .tabulka td {
         box-sizing: border-box;
         padding: 5px;
         font-size: 14px;
@@ -131,96 +128,125 @@ section {
         display: table-cell;
     }
 
-    .table tr>td:nth-child(-n+4) {
+    .tabulka tr>td:nth-child(-n+4) {
         flex: 1;
     }
 
-    .table td:empty {
+    .tabulka td:empty {
         display: none;
     }
 
-    .table.active {
+    .tabulka.active {
         display: block;
     }
 
-    .table:not(.active) {
+    .tabulka:not(.active) {
         display: none;
     }
 
-    #container-6-14 {
+    #kontejner-6-14 {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
     }
 
-    #container-6-14 td {
+    #kontejner-6-14 td {
         width: auto;
         box-sizing: border-box;
         padding: 5px;
         font-size: 14px;
     }
 
-    .table tr>td:nth-child(n+5):nth-child(-n+13) {
+    .tabulka tr>td:nth-child(n+5):nth-child(-n+13) {
         order: 1;
         width: 100%;
         display: table-cell;
     }
 
-    .table tr>td:nth-child(-n+4) {
+    .tabulka tr>td:nth-child(-n+4) {
         order: 0;
     }
 
-    .table td:nth-child(2) {
-        width: 800px; /* Set fixed width as needed */
+    .tabulka td:nth-child(2) {
+        width: 800px; /* Nastav pevnou šířku podle potřeby */
+        text-align: center;
+    }
+    .tabulka td:nth-child(2) img {
+        width: 80px; /* Zajistí, že obrázky budou mít správnou velikost */
+        height: 80px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .tabulka tr {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .tabulka td:nth-child(1), /* První sloupec */
+    .tabulka td:nth-child(3), /* Třetí sloupec */
+    .tabulka td:nth-child(4) { /* Čtvrtý sloupec */
+        flex: 1; /* Zmenšuje se podle dostupného prostoru */
         text-align: center;
     }
 
-    .table td:nth-child(2) img {
+    .tabulka td:nth-child(2) { /* Druhý sloupec */
+        flex: 0 0 80px; /* Pevná šířka 80px */
+        text-align: center;
+    }
+
+    .tabulka td:nth-child(2) img {
         width: 80px;
         height: 80px;
         display: block;
         margin: 0 auto;
     }
 
-    .table td:nth-child(1),
-    .table td:nth-child(3),
-    .table td:nth-child(4) {
-        flex: 1;
+    .tabulka tr {
+        display: flex;
+        flex-wrap: wrap; /* Umožní zalomení sloupců na další řádek */
+    }
+
+    .tabulka td {
+        box-sizing: border-box;
+        padding: 5px;
+        font-size: 14px;
         text-align: center;
     }
 
-    .table td:nth-child(2) {
-        flex: 0 0 80px;
+    .tabulka td:nth-child(2) { /* Druhý sloupec (obrázek) */
+        flex: 0 0 80px; /* Pevná šířka 80px */
+        height: 80px; /* Pevná výška */
         text-align: center;
     }
 
-    .table td:nth-child(2) img {
+    .tabulka td:nth-child(2) img {
         width: 80px;
         height: 80px;
         display: block;
         margin: 0 auto;
     }
 
-    .table td:nth-child(1),
-    .table td:nth-child(3),
-    .table td:nth-child(4) {
-        flex: 1 0 100%;
+    .tabulka td:nth-child(1), /* První sloupec */
+    .tabulka td:nth-child(3), /* Třetí sloupec */
+    .tabulka td:nth-child(4) { /* Čtvrtý sloupec */
+        flex: 1 0 100%; /* Zaberou celý řádek pod obrázkem */
     }
 
     tbody tr td {
-        background-color: inherit;
+        background-color: inherit; /* Zajistí, že všechny buňky mají stejný styl */
     }
 
     tbody tr td:first-child,
     tbody tr td:nth-child(2) {
-        background-color: #eecd14;
+        background-color: #eecd14; /* Styl pozadí pro všechny řádky */
     }
 
-    .table td:nth-child(2) img {
-        width: 80px;
-        height: 80px;
+    .tabulka td:nth-child(2) img {
+        width: 80px; /* Pevná šířka obrázku */
+        height: 80px; /* Pevná výška obrázku */
         display: block;
-        margin: -10px auto 0 auto;
+        margin: -10px auto 0 auto; /* Posune obrázek výše */
     }
 }
 
@@ -230,7 +256,7 @@ section {
     margin: 20px 0;
 }
 
-.table {
+.tabulka {
     width: 100%;
     border-collapse: collapse;
     display: none;
@@ -242,39 +268,38 @@ section {
     background-color: rgb(56, 54, 54);
 }
 
-.table th {
+
+.tabulka th {
     background-color: #f2f2f2;
 }
 
-.table.active {
+.tabulka.active {
     display: table;
 }
 
-.table th, .table td {
+.tabulka th, .tabulka td {
     border: 1px solid #ddd;
     text-align: center;
 }
-
-.table th,
-.table td {
+.tabulka th,
+.tabulka td {
     border: none;
     font-family: 'Poppins', sans-serif;
     color: white;
 }
-
-.table img {
+.tabulka img {
     max-width: 100%;
     height: auto;
     margin-left: 15%;
 }
 
-.table td:nth-child(2) {
-    width: 80px;
-    height: 80px;
+.tabulka td:nth-child(2) {
+    width: 80px; /* Pevná šířka */
+    height: 80px; /* Pevná výška */
     text-align: center;
 }
 
-/* Row highlight colors */
+
 tbody tr:nth-child(1) td:first-child,
 tbody tr:nth-child(1) td:nth-child(2) {
     background-color: #eecd14;
@@ -290,87 +315,122 @@ tbody tr:nth-child(3) td:nth-child(2) {
     background-color: #cd7f32;
 }
 
-#overall-table td:nth-child(4) {
+
+#overall-tabulka td:nth-child(4) {
     background-color: #141212;
 }
 
-/* Table background colors */
-#cpvp-table,
-#axe-table,
-#sword-table,
-#npot-table,
-#pot-table,
-#smp-table,
-#uhc-table,
-#diasmp-table {
+#cpvp-tabulka,
+#axe-tabulka,
+#sword-tabulka,
+#npot-tabulka,
+#pot-tabulka,
+#smp-tabulka,
+#uhc-tabulka,
+#diasmp-tabulka {
     background-color: rgba(27, 27, 105, 0.459);
 }
 
-/* Highlight first row columns (3rd, 4th, 5th, 6th, 7th) */
-#cpvp-table tr:nth-child(1) td:nth-child(3),
-#axe-table tr:nth-child(1) td:nth-child(3),
-...
-#diasmp-table tr:nth-child(1) td:nth-child(3) {
+#cpvp-tabulka tr:nth-child(1) td:nth-child(3),
+#axe-tabulka tr:nth-child(1) td:nth-child(3),
+#sword-tabulka tr:nth-child(1) td:nth-child(3),
+#npot-tabulka tr:nth-child(1) td:nth-child(3),
+#pot-tabulka tr:nth-child(1) td:nth-child(3),
+#smp-tabulka tr:nth-child(1) td:nth-child(3),
+#uhc-tabulka tr:nth-child(1) td:nth-child(3),
+#diasmp-tabulka tr:nth-child(1) td:nth-child(3) {
     background-color: #eecd14cc;
 }
 
-/* And so on for other columns with similar patterns */
-...
-#diasmp-table tr:nth-child(1) td:nth-child(7) {
+#cpvp-tabulka tr:nth-child(1) td:nth-child(4),
+#axe-tabulka tr:nth-child(1) td:nth-child(4),
+#sword-tabulka tr:nth-child(1) td:nth-child(4),
+#npot-tabulka tr:nth-child(1) td:nth-child(4),
+#pot-tabulka tr:nth-child(1) td:nth-child(4),
+#smp-tabulka tr:nth-child(1) td:nth-child(4),
+#uhc-tabulka tr:nth-child(1) td:nth-child(4),
+#diasmp-tabulka tr:nth-child(1) td:nth-child(4) {
+    background-color: #c0c0c0b9;
+}
+
+#cpvp-tabulka tr:nth-child(1) td:nth-child(5),
+#axe-tabulka tr:nth-child(1) td:nth-child(5),
+#sword-tabulka tr:nth-child(1) td:nth-child(5),
+#npot-tabulka tr:nth-child(1) td:nth-child(5),
+#pot-tabulka tr:nth-child(1) td:nth-child(5),
+#smp-tabulka tr:nth-child(1) td:nth-child(5),
+#uhc-tabulka tr:nth-child(1) td:nth-child(5),
+#diasmp-tabulka tr:nth-child(1) td:nth-child(5) {
+    background-color: #cd8032b4;
+}
+
+#cpvp-tabulka tr:nth-child(1) td:nth-child(6),
+#axe-tabulka tr:nth-child(1) td:nth-child(6),
+#sword-tabulka tr:nth-child(1) td:nth-child(6),
+#npot-tabulka tr:nth-child(1) td:nth-child(6),
+#pot-tabulka tr:nth-child(1) td:nth-child(6),
+#smp-tabulka tr:nth-child(1) td:nth-child(6),
+#uhc-tabulka tr:nth-child(1) td:nth-child(6),
+#diasmp-tabulka tr:nth-child(1) td:nth-child(6),
+#cpvp-tabulka tr:nth-child(1) td:nth-child(7),
+#axe-tabulka tr:nth-child(1) td:nth-child(7),
+#sword-tabulka tr:nth-child(1) td:nth-child(7),
+#npot-tabulka tr:nth-child(1) td:nth-child(7),
+#pot-tabulka tr:nth-child(1) td:nth-child(7),
+#smp-tabulka tr:nth-child(1) td:nth-child(7),
+#uhc-tabulka tr:nth-child(1) td:nth-child(7),
+#diasmp-tabulka tr:nth-child(1) td:nth-child(7) {
     background: #535353;
 }
 
-/* Transparent background for lower rows */
-#cpvp-table tr:nth-child(n+4) td:nth-child(3),
-...
-#diasmp-table tr:nth-child(n+4) td:nth-child(3) {
+
+#cpvp-tabulka tr:nth-child(n+4) td:nth-child(3),
+#axe-tabulka tr:nth-child(n+4) td:nth-child(3),
+#sword-tabulka tr:nth-child(n+4) td:nth-child(3),
+#npot-tabulka tr:nth-child(n+4) td:nth-child(3),
+#pot-tabulka tr:nth-child(n+4) td:nth-child(3),
+#smp-tabulka tr:nth-child(n+4) td:nth-child(3),
+#uhc-tabulka tr:nth-child(n+4) td:nth-child(3),
+#diasmp-tabulka tr:nth-child(n+4) td:nth-child(3) {
     background-color: rgba(253, 253, 253, 0);
 }
-
-/* Responsive styles - large screens */
 @media (min-width: 769px) {
-    .table th, .table td {
+    .tabulka th, .tabulka td {
         padding: clamp(2px, 1vw, 4px);
         font-size: clamp(2px, 1vw, 32px);
     }
-
-    .table th,
-    .table td {
+    .tabulka th,
+    .tabulka td {
         padding-left: clamp(2px, 1vw, 28px);
         padding-right: clamp(2px, 1vw, 28px);
-    }
 
-    .table img {
+    }
+    .tabulka img {
         width: clamp(1px, 2vw, 120px);
     }
-
-    .table td:nth-child(1) {
+    .tabulka td:nth-child(1) {
         font-size: clamp(1px, 2vw, 120px);
     }
 }
-
-/* Responsive styles - small screens */
 @media (max-width: 768px) {
-    header {
+    header{
         width: 91%;
     }
-
     nav ul {
         width: 97%;
     }
-
-    .table {
+    .tabulka {
         display: block;
         width: 100%;
         overflow-x: auto;
     }
 
-    .table tr {
+    .tabulka tr {
         display: flex;
         flex-wrap: wrap;
     }
 
-    .table td {
+    .tabulka td {
         box-sizing: border-box;
         padding: 5px;
         font-size: 14px;
@@ -378,70 +438,65 @@ tbody tr:nth-child(3) td:nth-child(2) {
         display: table-cell;
     }
 
-    .table tr>td:nth-child(-n+4) {
+    .tabulka tr>td:nth-child(-n+4) {
         flex: 1;
     }
 
-    .table td:empty {
+    .tabulka td:empty {
         display: none;
     }
 
-    .table.active {
+    .tabulka.active {
         display: block;
     }
 
-    .table:not(.active) {
+    .tabulka:not(.active) {
         display: none;
     }
 
-    #container-6-14 {
+    #kontejner-6-14 {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
     }
 
-    #container-6-14 td {
+    #kontejner-6-14 td {
         width: auto;
         box-sizing: border-box;
         padding: 5px;
         font-size: 14px;
     }
 
-    .table tr>td:nth-child(n+5):nth-child(-n+13) {
+    .tabulka tr>td:nth-child(n+5):nth-child(-n+13) {
         order: 1;
         width: 100%;
         display: table-cell;
     }
 
-    .table tr>td:nth-child(-n+4) {
+    .tabulka tr>td:nth-child(-n+4) {
         order: 0;
     }
-
-    .table th, .table td {
+    .tabulka th, .tabulka td {
         text-align: center;
+        ;
     }
-
-    .table tr>td:nth-child(n+5):nth-child(-n+13) img {
+    .tabulka tr>td:nth-child(n+5):nth-child(-n+13) img{
         margin-left: 46%;
     }
-
-    tbody tr:nth-child(1) td:first-child {
+    tbody tr:nth-child(1) td:first-child{
         min-width: none;
     }
-
     tbody tr:nth-child(1) td:nth-child(2) {
         min-width: 50%;
     }
-
-    .table td:nth-child(2) {
-        width: 80px;
+    .tabulka td:nth-child(2) {
+        width: 80px; /* Nastav pevnou šířku podle potřeby */
         text-align: center;
     }
-
-    .table td:nth-child(2) img {
-        width: 80px;
+    .tabulka td:nth-child(2) img {
+        width: 80px; /* Zajistí, že obrázky budou mít správnou velikost */
         height: 80px;
         display: block;
-        margin: -10px auto 0 auto;
+        margin: -10px auto 0 auto; /* Posune obrázek výše */
     }
 }
